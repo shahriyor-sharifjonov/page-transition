@@ -10,7 +10,7 @@ function contentAnimation(){
     tl.to('img', {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"}, "-=1.1")
 }
 
-function menu() {
+function setMenuLinks() {
     const links = document.querySelectorAll('.header__link');
     const location = window.location.pathname;
     links.forEach(link => {
@@ -26,6 +26,13 @@ function menu() {
     });
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        setMenuLinks();
+    }, 200);
+})
+
+
 function delay(n) {
     n = n || 2000;
     return new Promise(done => {
@@ -35,19 +42,13 @@ function delay(n) {
     });
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        menu();
-    }, 200);
-})
-
 barba.init({
     sync: true,
     transitions: [{
         async leave(data) {
             const done = this.async();
             pageTransition();
-            menu();
+            setMenuLinks();
             await delay(1500);
             done();
         },
