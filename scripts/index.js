@@ -10,6 +10,22 @@ function contentAnimation(){
     tl.to('img', {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"}, "-=1.1")
 }
 
+function menu() {
+    const links = document.querySelectorAll('.header__link');
+    const location = window.location.pathname;
+    links.forEach(link => {
+        const linkHref = '/' + link.getAttribute('href');
+        if(linkHref == location){
+            link.classList.add('active');
+            link.setAttribute('href', '#!');
+        }else{
+            link.classList.remove('active');
+            const dataHref = link.getAttribute('data-href');
+            link.setAttribute('href', dataHref);
+        }
+    });
+}
+
 function delay(n) {
     n = n || 2000;
     return new Promise(done => {
@@ -19,12 +35,19 @@ function delay(n) {
     });
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        menu();
+    }, 200);
+})
+
 barba.init({
     sync: true,
     transitions: [{
         async leave(data) {
             const done = this.async();
             pageTransition();
+            menu();
             await delay(1500);
             done();
         },
