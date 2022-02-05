@@ -6,17 +6,9 @@ function pageTransition() {
 
 function contentAnimation(){
     var tl = gsap.timeline();
-    tl.from(".line span", 1, {
-        y: 100,
-        ease: "power1.out",
-        delay: 1,
-        skewY: 17,
-        stagger: {
-          amount: 0.3
-        }   
-    }, "-=1.1")
+    tl.from(".line span", 1, {y: 120, ease: "power1.out", delay: 1, skewY: 17, stagger: {amount: 0}}, "-=1.1")
     tl.from('.cta', {duration: .8, translateY: 50, opacity: 0})
-    tl.to('img', {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"}, "-=1.1")
+    tl.to('img', {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"}, "-=1.1") 
 }
 
 function setMenuLinks() {
