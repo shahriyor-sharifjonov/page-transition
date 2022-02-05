@@ -33,6 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 
+
 function delay(n) {
     n = n || 2000;
     return new Promise(done => {
@@ -41,6 +42,7 @@ function delay(n) {
         }, n);
     });
 }
+
 
 barba.init({
     sync: true,
